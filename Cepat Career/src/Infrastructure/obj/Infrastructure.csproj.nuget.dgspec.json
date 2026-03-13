@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\Application.csproj": {
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\obj\\",
+        "outputPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CEPAT-OJT6\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj"
+              "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -80,14 +80,14 @@
         }
       }
     },
-    "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj": {
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CEPAT-OJT6\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -138,14 +138,14 @@
         }
       }
     },
-    "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CEPAT-OJT6\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -160,11 +160,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Application\\Application.csproj"
+              "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\CEPAT-OJT6\\Desktop\\Cepat Career\\src\\Domain\\Domain.csproj"
+              "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj"
               }
             }
           }
