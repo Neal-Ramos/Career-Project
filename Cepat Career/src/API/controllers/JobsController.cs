@@ -1,0 +1,39 @@
+using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using Application.features.Jobs.Queries.GetAllJobs;
+using API.common.Responses;
+
+namespace API.controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class JobsController : ControllerBase
+    {
+        private readonly IMediator _mediatR;
+
+        public JobsController(IMediator mediatR)
+        {
+            _mediatR = mediatR;
+        }
+
+        [HttpGet("GetJobs")]
+        public async Task<IActionResult> GetAllJobs(
+            [FromQuery] int Page = 1,
+            [FromQuery] int PageSize = 10
+        )
+        {
+            var query = new GetAllJobsQuery{
+                Page = Page,
+                PageSize = PageSize
+            };
+            var result = await _mediatR.Send(query);
+
+            return Ok(new APIResponse<object>
+            {
+                Message = "Success",
+                Status = 200,
+                Data = result
+            });
+        }
+    }
+}
