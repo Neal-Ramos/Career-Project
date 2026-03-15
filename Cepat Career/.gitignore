@@ -1,0 +1,43 @@
+# Build folders
+bin/
+obj/
+out/
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+# Visual Studio
+.vs/
+.vscode/
+# Logs
+*.log
+logs/
+# ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+# Publish / Build output
+publish/
+*.publishsettings
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+# Entity Framework
+*.db
+*.sqlite
+*.sqlite3
+# Node (if frontend inside project)
+node_modules/
+dist/
+build/
+# OS Files
+.DS_Store
+Thumbs.db
+# Rider / JetBrains
+.idea/
+# Environment variables
+.env
+.env.*
