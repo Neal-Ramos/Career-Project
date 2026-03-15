@@ -19,6 +19,7 @@ namespace Infrastructure.Repository
         )
         {
             var jobs = await context.Jobs
+            .OrderBy(j => j.Id)
             .Take(PageSize)
             .Skip((Page - 1) * PageSize)
             .Select(j => new JobsDto
@@ -33,6 +34,32 @@ namespace Infrastructure.Repository
             }).ToListAsync();
 
             return jobs;
+        }
+
+        public async Task<JobsDto?> GetJobsById(
+            Guid JobId
+        )
+        {
+            var result = context.Jobs
+                .FirstOrDefault(j => j.JobId == JobId);
+            
+            if(result == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new JobsDto
+                {
+                    Id = result.Id,
+                    JobId = result.JobId,
+                    Title = result.Title,
+                    Description = result.Description,
+                    Roles = result.Roles,
+                    FileRequirements = result.FileRequirements,
+                    DateCreated = result.DateCreated
+                };
+            }
         }
     }
 }

@@ -8,5 +8,8 @@ namespace Application.commons.IRepository
             int Page,
             int PageSize
         );
+        Task<JobsDto?> GetJobsById(
+            Guid JobId
+        );
     }
 }

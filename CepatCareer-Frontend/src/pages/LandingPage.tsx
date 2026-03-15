@@ -1,66 +1,34 @@
-import { Layout } from "antd"
-import { Header } from "antd/es/layout/layout"
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { Col, Empty, Layout, Row } from "antd"
 import JobsCard from "../components/JobsCards"
-
-type jobs = {
-    applicants?: string,
-    dateCreated: string,
-    description: string,
-    fileRequirements: string,
-    id: number,
-    jobId: string,
-    roles: string,
-    title: string,
-}
+import LandingHero from "../components/LandingHero"
+import { useJobs } from "../Hooks/useJobs"
 
 function LandingPage(){
-    const [search, setSearch] = useState("")
-    const [jobs, setJobs] = useState<jobs[]>([])
-    const HandleSubmitSearch = () => {
-        console.log(search)
-    }
-
-    useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                const res = await axios.get("http://localhost:5221/api/Jobs/GetJobs")
-                setJobs(res.data.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchJobs()
-    },[])
-
+    const { data, isLoading, isError, error } = useJobs(1, 4)
     return(
-        <Layout className="h-dvh">
-            <Header className="h-fit! text-center p-14!">
-                <h1 className="font-bold text-4xl text-white">C Career</h1>
-                <form onSubmit={(e) => {
-                    e.preventDefault()
-                    HandleSubmitSearch()
-                }}>
-                    <input type="text"
-                        placeholder="Search Jobs..."
-                        className="border w-2xl h-11 m-4 p-3 text-[1.2rem] rounded-4xl bg-white"
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </form>
-            </Header>
-            <Layout className="p-4">
-                <h1 className="text-3xl font-medium">Available Jobs</h1>
-                {
-                    jobs.map(job => {
-                        return <JobsCard
-                            key={job.jobId}
-                            title={job.title}
-                            dateCreated={job.dateCreated}
-                            roles={JSON.parse(job.roles)}
-                            description={job.description}
-                        />
-                    })
+        <Layout>
+            <LandingHero/>
+            <Layout className="max-w-4xl! mx-auto! px-6! py-16! w-full! min-h-dvh!">
+                <div className="mb-10 text-center">
+                    <h2 className="text-3xl font-black text-slate-900 tracking-tight">Available Jobs</h2>
+                </div>
+                {!data?.length || error || isError?
+                    <Empty/>:
+                    <Row gutter={[24, 24]}>
+                        {data.map((job) => (
+                            <Col xs={24} md={12} key={job.id}>
+                                <JobsCard 
+                                    key={job.jobId}
+                                    title={job.title}
+                                    dateCreated={job.dateCreated}
+                                    roles={JSON.parse(job.roles)}
+                                    description={job.description}
+                                    jobGuid={job.jobId}
+                                    isLoading={isLoading}
+                                />
+                            </Col>
+                        ))}
+                    </Row>
                 }
             </Layout>
         </Layout>

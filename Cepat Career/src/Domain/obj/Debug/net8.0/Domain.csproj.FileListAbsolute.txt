@@ -21,3 +21,15 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\Domain\obj\
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\ref\Domain.dll
+E:\GitHub\Career-Project\Cepat Career\src\Domain\bin\Debug\net8.0\Domain.deps.json
+E:\GitHub\Career-Project\Cepat Career\src\Domain\bin\Debug\net8.0\Domain.dll
+E:\GitHub\Career-Project\Cepat Career\src\Domain\bin\Debug\net8.0\Domain.pdb
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.dll
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\refint\Domain.dll
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\Domain.pdb
+E:\GitHub\Career-Project\Cepat Career\src\Domain\obj\Debug\net8.0\ref\Domain.dll

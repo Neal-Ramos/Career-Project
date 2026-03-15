@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.features.Jobs.Queries.GetAllJobs;
 using API.common.Responses;
+using Application.features.Jobs.Queries.GetJobsById;
 
 namespace API.controllers
 {
@@ -25,6 +26,25 @@ namespace API.controllers
             var query = new GetAllJobsQuery{
                 Page = Page,
                 PageSize = PageSize
+            };
+            var result = await _mediatR.Send(query);
+
+            return Ok(new APIResponse<object>
+            {
+                Message = "Success",
+                Status = 200,
+                Data = result
+            });
+        }
+
+        [HttpGet("GetJobById")]
+        public async Task<IActionResult> GetJobsById(
+            [FromQuery] Guid JobId
+        )
+        {
+            var query = new GetJobsByIdQuery
+            {
+                JobId = JobId
             };
             var result = await _mediatR.Send(query);
 
