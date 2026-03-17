@@ -20,7 +20,7 @@ function FileRequirements({files}: FileRequirements) {
                     return <Col xs={24} md={12}>
                         <Form.Item 
                             label={file.FileName} 
-                            name="resume" 
+                            name={file.FileName.replace(" ", "" )} 
                             valuePropName="fileList" 
                             getValueFromEvent={normFile}
                             rules={[{ required: file.Required, message: `${file.FileName} is required` }]}

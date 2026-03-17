@@ -19,6 +19,7 @@ namespace API.controllers
 
         [HttpGet("GetJobs")]
         public async Task<IActionResult> GetAllJobs(
+            CancellationToken cancellationToken,
             [FromQuery] int Page = 1,
             [FromQuery] int PageSize = 10
         )
@@ -27,7 +28,7 @@ namespace API.controllers
                 Page = Page,
                 PageSize = PageSize
             };
-            var result = await _mediatR.Send(query);
+            var result = await _mediatR.Send(query, cancellationToken);
 
             return Ok(new APIResponse<object>
             {
@@ -39,14 +40,15 @@ namespace API.controllers
 
         [HttpGet("GetJobById")]
         public async Task<IActionResult> GetJobsById(
-            [FromQuery] Guid JobId
+            [FromQuery] Guid JobId,
+            CancellationToken cancellationToken
         )
         {
             var query = new GetJobsByIdQuery
             {
                 JobId = JobId
             };
-            var result = await _mediatR.Send(query);
+            var result = await _mediatR.Send(query, cancellationToken);
 
             return Ok(new APIResponse<object>
             {

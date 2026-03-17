@@ -1,18 +1,48 @@
-import { Button, Card, Col, DatePicker, Divider, Form, Input, Layout, Row } from "antd"
+import { Button, Card, Col, DatePicker, Divider, Form, Input, Layout, Row, Spin } from "antd"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
 import { useParams } from "react-router-dom"
 import FileRequirements from "../components/FileReuirements"
 import { useJobsById } from "../Hooks/useJobs"
+import { AddApplication } from "../Hooks/useApplications"
+import { getYear } from "../helpers/GetYear"
 
 function ApplyJob(){
     const { jobGuid } = useParams()
-    const { data, isLoading, isError, error } = useJobsById(jobGuid || "")
+    const { data, isLoading, isError, error } = useJobsById(jobGuid as string)
     const [form] = Form.useForm();
+    const applyMutation = AddApplication()
 
     const onFinish = () => {
-        
+        const formValues = form.getFieldsValue();
+        const formData = new FormData();
+
+        Object.keys(formValues).forEach((key) => {
+            let value = formValues[key];
+
+            if (key == "graduationYear") {
+                formData.append(key, getYear(value));
+            }
+            if (Array.isArray(value)) {
+                value.forEach((fileItem) => {
+                    if (fileItem?.originFileObj) {
+                        formData.append(key, fileItem.originFileObj);
+                    }
+                });
+                return;
+            }
+            if (value !== undefined && value !== null) {
+                formData.append(key, value);
+            }
+        });
+
+        applyMutation.mutate(formData)
+        // console.log(...formData.entries())
     };
+
+    
+    if(isLoading)return <Spin/>
+    if(isError || error)return <>Error!</>
 
     return(
         <Layout>
@@ -103,7 +133,7 @@ function ApplyJob(){
                         </div>
                         <FileRequirements files={data?.fileRequirements ? JSON.parse(data.fileRequirements) : []}/>
                         <div className="mt-10!">
-                        <Button 
+                        <Button
                             type="primary" 
                             htmlType="submit" 
                             block 

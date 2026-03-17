@@ -29,6 +29,7 @@ namespace Infrastructure
             });
 
             services.AddScoped<IJobsRepository, JobsRepository>();
+            services.AddScoped<IApplicationsRepository, JobApplicationsRepository>();
 
             return services;
         }

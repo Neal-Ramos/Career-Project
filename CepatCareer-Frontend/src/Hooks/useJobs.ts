@@ -13,7 +13,7 @@ export const useJobs = (Page: number, PageSize: number) => {
 }
 export const useJobsById = (jobGuid: string) => {
     return useQuery<IJob>({
-        queryKey: ["Jobs"],
+        queryKey: ["jobById", jobGuid],
         queryFn: () => fetchJobsById(jobGuid),
         staleTime: 1000 * 60 * 5,
         refetchOnWindowFocus: false,
