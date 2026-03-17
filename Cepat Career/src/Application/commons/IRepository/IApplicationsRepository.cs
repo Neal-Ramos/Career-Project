@@ -13,7 +13,9 @@ namespace Application.commons.IRepository
             string ContactNumber,
             string UniversityName,
             string Degree,
-            int GraduationYear
-        ); 
+            int GraduationYear,
+            string SubmittedFile,
+            Guid JobId
+        );
     }
 }

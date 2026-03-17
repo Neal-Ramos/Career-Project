@@ -26,16 +26,17 @@ namespace API.controllers
             [FromForm] string UniversityName,
             [FromForm] string Degree,
             [FromForm] string GraduationYear,
+            [FromForm] Guid JobId,
             CancellationToken cancellationToken
         )
         {
-            var dtoFiles = Request.Form.Files.Select(file => new FileUploadDTO
+            var SubmittedFile = Request.Form.Files.Select(file => new FileUploadDTO
             {
                 FileName = file.FileName,
                 ContentType = file.ContentType,
                 Content = file.OpenReadStream()
             }).ToList();
-            var result = new AddApplicationCommand
+            var query = new AddApplicationCommand
             {
                 FirstName = FirstName,
                 MiddleName = MiddleName,
@@ -44,8 +45,12 @@ namespace API.controllers
                 ContactNumber = ContactNumber,
                 UniversityName = UniversityName,
                 Degree = Degree,
-                GraduationYear = int.Parse(GraduationYear)
+                GraduationYear = int.Parse(GraduationYear),
+                SubmittedFile = SubmittedFile,
+                JobId = JobId
             };
+
+            var result = await _mediator.Send(query, cancellationToken);
             
             return Ok(new APIResponse<object>
             {

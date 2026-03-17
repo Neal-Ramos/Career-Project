@@ -56,6 +56,7 @@ namespace Infrastructure.Persistence.configurations
                 .HasDefaultValueSql("GETUTCDATE()");
 
             builder.Property(a => a.Status)
+                .HasConversion<string>()
                 .HasDefaultValue(ApplicationStatusEnum.Pending);
                 
             builder.Property(a => a.DateReviewed);

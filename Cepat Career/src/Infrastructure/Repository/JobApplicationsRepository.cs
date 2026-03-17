@@ -25,7 +25,9 @@ namespace Infrastructure.Repository
             string ContactNumber,
             string UniversityName,
             string Degree,
-            int GraduationYear
+            int GraduationYear,
+            string FileSubmitted,
+            Guid JobId
         )
         {
             var newApplication = new JobApplications
@@ -37,7 +39,9 @@ namespace Infrastructure.Repository
                 ContactNumber = ContactNumber,
                 UniversityName = UniversityName,
                 Degree = Degree,
-                GraduationYear = GraduationYear
+                GraduationYear = GraduationYear,
+                FileSubmitted = FileSubmitted,
+                JobId = JobId
             };
             await context.JobApplications.AddAsync(newApplication);
             context.SaveChanges();
@@ -54,7 +58,7 @@ namespace Infrastructure.Repository
                 UniversityName = newApplication.UniversityName,
                 Degree = newApplication.Degree,
                 GraduationYear = newApplication.GraduationYear,
-                FileSubmitted = "",
+                FileSubmitted = FileSubmitted,
                 Status = newApplication.Status,
                 DateSubmitted = newApplication.DateSubmitted,
                 DateReviewed = newApplication.DateReviewed,

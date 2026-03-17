@@ -1,47 +1,54 @@
-import { Button, Card, Col, DatePicker, Divider, Form, Input, Layout, Row, Spin } from "antd"
+import { Button, Card, Col, DatePicker, Divider, Form, Input, Layout, notification, Row, Spin } from "antd"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
-import { useParams } from "react-router-dom"
+import { replace, useNavigate, useParams } from "react-router-dom"
 import FileRequirements from "../components/FileReuirements"
 import { useJobsById } from "../Hooks/useJobs"
 import { AddApplication } from "../Hooks/useApplications"
 import { getYear } from "../helpers/GetYear"
 
+interface f {
+    FileName: string
+    Required: boolean
+}
+
 function ApplyJob(){
     const { jobGuid } = useParams()
     const { data, isLoading, isError, error } = useJobsById(jobGuid as string)
     const [form] = Form.useForm();
+    const fileRequirements: f[] = data?.fileRequirements ? JSON.parse(data.fileRequirements) : []
     const applyMutation = AddApplication()
+    const navigate = useNavigate()
 
     const onFinish = () => {
         const formValues = form.getFieldsValue();
         const formData = new FormData();
 
-        Object.keys(formValues).forEach((key) => {
-            let value = formValues[key];
+        formData.append("contactNumber", formValues.contactNumber)
+        formData.append("degree", formValues.degree)
+        formData.append("email", formValues.email)
+        formData.append("firstName", formValues.firstName)
+        formData.append("graduationYear", getYear(formValues.graduationYear))
+        formData.append("lastName", formValues.lastName)
+        formData.append("middleName", formValues.middleName)
+        formData.append("universityName", formValues.universityName)
+        formData.append("JobId", jobGuid as string)
+        fileRequirements.map(f => formData.append(f.FileName, formValues[f.FileName][0].originFileObj))
 
-            if (key == "graduationYear") {
-                formData.append(key, getYear(value));
+        applyMutation.mutate(formData, {
+            onSuccess: () => {
+                notification.success({title: "Application Submitted", description: "Your Application is now Submitted!"})
+                navigate('/')
+            },
+            onError: () => {
+                notification.error({title: "Application Failed to Submitted", description: "Application Failed to Submit Try Again Later!"})
             }
-            if (Array.isArray(value)) {
-                value.forEach((fileItem) => {
-                    if (fileItem?.originFileObj) {
-                        formData.append(key, fileItem.originFileObj);
-                    }
-                });
-                return;
-            }
-            if (value !== undefined && value !== null) {
-                formData.append(key, value);
-            }
-        });
-
-        applyMutation.mutate(formData)
-        // console.log(...formData.entries())
+        })
+        
     };
 
     
-    if(isLoading)return <Spin/>
+    if(isLoading)return <div className="h-dvh justify-center items-center flex"><Spin size="large"/></div>
     if(isError || error)return <>Error!</>
 
     return(
@@ -137,7 +144,7 @@ function ApplyJob(){
                             type="primary" 
                             htmlType="submit" 
                             block 
-                            loading={isLoading}
+                            loading={applyMutation.isPending}
                             className="h-12! text-lg! font-bold! rounded-lg! shadow-lg! bg-blue-600! hover:bg-blue-700! border-none!"
                         >
                             Submit Full Application

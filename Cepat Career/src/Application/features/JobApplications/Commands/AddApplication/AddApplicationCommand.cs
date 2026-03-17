@@ -17,5 +17,7 @@ namespace Application.features.JobApplications.Commands.AddApplication
         public string UniversityName {get; set;} = string.Empty;
         public string Degree {get; set;} = string.Empty;
         public int GraduationYear {get; set;}
+        public List<FileUploadDTO> SubmittedFile {get; set;} = [];
+        public Guid JobId {get; set;}
     }
 }

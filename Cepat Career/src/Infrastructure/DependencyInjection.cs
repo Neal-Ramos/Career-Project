@@ -1,9 +1,12 @@
 using Application.commons.IRepository;
+using Application.commons.IServices;
 using Infrastructure.Persistence;
 using Infrastructure.Repository;
+using Infrastructure.Services;
+using Infrastructure.Services.CloudinaryServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection; 
 
 namespace Infrastructure
 {
@@ -30,6 +33,12 @@ namespace Infrastructure
 
             services.AddScoped<IJobsRepository, JobsRepository>();
             services.AddScoped<IApplicationsRepository, JobApplicationsRepository>();
+
+            services.Configure<CloudinarySettings>(
+                configuration.GetSection("CloudinarySettings")
+            );
+
+            services.AddScoped<IStorageRepository, StorageRepository>();
 
             return services;
         }

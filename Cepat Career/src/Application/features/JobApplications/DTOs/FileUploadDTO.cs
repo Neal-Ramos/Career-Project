@@ -7,10 +7,10 @@ namespace Application.features.JobApplications.DTOs
 {
     public class FileUploadDTO
     {
-        public string? FileName { get; set; }
-        public string? Name {get; set;}
-        public string? ContentType { get; set; }
-        public Stream? Content { get; set; }
+        public string FileName { get; set; } = null!;
+        public string Name {get; set;} = null!;
+        public string ContentType { get; set; } = null!;
+        public Stream Content { get; set; } = null!;
 
     }
 }

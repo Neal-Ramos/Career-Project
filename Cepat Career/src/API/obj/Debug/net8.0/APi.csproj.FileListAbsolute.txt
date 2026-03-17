@@ -400,6 +400,7 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Deb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
@@ -411,6 +412,7 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Deb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
