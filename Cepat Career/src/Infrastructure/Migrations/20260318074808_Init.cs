@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,9 +19,9 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     JobId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Roles = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    FileRequirements = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    FileRequirements = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     CreatedBy = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -38,16 +38,19 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ApplicationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UniversityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Degree = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GraduationYear = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ContactNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
+                    UniversityName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Degree = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    GraduationYear = table.Column<int>(type: "int", nullable: false),
                     FileSubmitted = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "Pending"),
+                    DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    DateReviewed = table.Column<DateTime>(type: "datetime2", nullable: true),
                     JobId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -60,6 +63,11 @@ namespace Infrastructure.Migrations
                         principalColumn: "JobId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobApplications_ApplicationId",
+                table: "JobApplications",
+                column: "ApplicationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobApplications_JobId",

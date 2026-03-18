@@ -29,7 +29,6 @@ namespace Infrastructure.Persistence.configurations
                 .IsRequired();
             
             builder.Property(j => j.Description)
-                .HasMaxLength(500)
                 .IsRequired();
 
             builder.Property(j => j.Roles)
@@ -37,7 +36,6 @@ namespace Infrastructure.Persistence.configurations
                 .IsRequired();
 
             builder.Property(j => j.FileRequirements)
-                .HasMaxLength(1000)
                 .IsRequired();
 
             builder.Property(j => j.DateCreated)

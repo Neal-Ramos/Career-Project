@@ -2,8 +2,8 @@ import { Col, Empty, Layout, Pagination, Row, Skeleton } from "antd"
 import JobsCard from "../components/JobsCards"
 import LandingHero from "../components/LandingHero"
 import { useJobs } from "../Hooks/useJobs"
-import { Footer } from "antd/es/layout/layout"
 import { useRef, useState } from "react"
+import BackTop from "antd/es/float-button/BackTop"
 
 function LandingPage(){
     const [page, setPage] = useState(1)
@@ -14,8 +14,8 @@ function LandingPage(){
 
     return(
         <Layout>
-            <LandingHero setSearch= {setSearch}/>
-            <Layout className="max-w-4xl! mx-auto! px-6! pt-10! w-full! min-h-85!" ref={jobSection}>
+            <LandingHero setSearch= {setSearch} setPage={setPage}/>
+            <Layout className="max-w-7xl! mx-auto! px-6! pt-10! w-full! min-h-85!" ref={jobSection}>
                 <div className="mb-10 text-center">
                     <h2 className="text-3xl font-black text-slate-900 tracking-tight">Available Jobs</h2>
                 </div>
@@ -31,9 +31,9 @@ function LandingPage(){
                         <Empty description={"No Jobs Available!"}/>
                     ):
                     data?.jobs.length? (
-                        <Row gutter={[24, 24]}>
+                        <Row gutter={[24, 24]} align={"top"}>
                             {data.jobs.map((job) => (
-                                <Col xs={24} md={12} key={job.id}>
+                                <Col xs={24} md={24} key={job.id}>
                                     <JobsCard
                                         key={job.jobId}
                                         title={job.title}
@@ -64,6 +64,7 @@ function LandingPage(){
                         jobSection.current?.scrollIntoView()
                     }}
                 />
+                <BackTop/>
             </Layout>
         </Layout>
     )

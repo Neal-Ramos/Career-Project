@@ -6,13 +6,15 @@ import { useEffect, useState } from "react"
 
 interface LandingHero {
     setSearch: Function
+    setPage: Function
 }
 
-function LandingHero({setSearch}: LandingHero) {
+function LandingHero({setSearch, setPage}: LandingHero) {
     const [debounce, setDebounce] = useState("")
     useEffect(() => {
         const handler = setTimeout(() => {
             setSearch(debounce)
+            setPage(1)
         }, 500)
         return () => {
             clearTimeout(handler)
