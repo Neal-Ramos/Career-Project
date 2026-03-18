@@ -4,7 +4,7 @@ namespace Application.commons.IRepository
 {
     public interface IJobsRepository
     {
-        Task<List<JobsDto>> GetAllJobs(
+        Task<GetAllJobsDto> GetAllJobs(
             int Page,
             int PageSize
         );

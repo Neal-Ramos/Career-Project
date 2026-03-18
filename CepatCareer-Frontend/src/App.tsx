@@ -6,7 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/' element={<LandingPage/>}>
+        </Route>
         <Route path='/apply/:jobGuid' element={<ApplyJob/>}/>
       </Routes>
     </BrowserRouter>

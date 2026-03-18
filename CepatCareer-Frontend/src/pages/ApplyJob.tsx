@@ -1,7 +1,7 @@
 import { Button, Card, Col, DatePicker, Divider, Form, Input, Layout, notification, Row, Spin } from "antd"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
-import { replace, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import FileRequirements from "../components/FileReuirements"
 import { useJobsById } from "../Hooks/useJobs"
 import { AddApplication } from "../Hooks/useApplications"

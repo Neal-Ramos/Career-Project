@@ -21,7 +21,7 @@ namespace API.controllers
         public async Task<IActionResult> GetAllJobs(
             CancellationToken cancellationToken,
             [FromQuery] int Page = 1,
-            [FromQuery] int PageSize = 10
+            [FromQuery] int PageSize = 5
         )
         {
             var query = new GetAllJobsQuery{

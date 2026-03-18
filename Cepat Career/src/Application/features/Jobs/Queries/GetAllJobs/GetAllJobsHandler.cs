@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.features.Jobs.Queries.GetAllJobs
 {
-    public class GetAllJobsHandler: IRequestHandler<GetAllJobsQuery, List<JobsDto>>
+    public class GetAllJobsHandler: IRequestHandler<GetAllJobsQuery, GetAllJobsDto>
     {
         public readonly IJobsRepository _jobsRepository;
 
@@ -15,7 +15,7 @@ namespace Application.features.Jobs.Queries.GetAllJobs
             _jobsRepository = jobsRepository;
         }
 
-        public async Task<List<JobsDto>> Handle(GetAllJobsQuery req, CancellationToken cancellationToken)
+        public async Task<GetAllJobsDto> Handle(GetAllJobsQuery req, CancellationToken cancellationToken)
         {
             var result = await _jobsRepository.GetAllJobs(
                 Page:req.Page,

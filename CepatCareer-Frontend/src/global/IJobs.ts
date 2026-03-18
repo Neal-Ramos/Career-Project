@@ -8,3 +8,8 @@ export interface IJob {
     roles: string,
     title: string,
 }
+export interface FetchJobs{
+    jobs: IJob[]
+    totalPages: number,
+    totalRecords: number
+}

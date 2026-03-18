@@ -15,7 +15,7 @@ function LandingHero() {
             </div>
 
             <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-8">
-                <Title className="!text-white !text-4xl md:!text-6xl !font-bold !mb-6">
+                <Title className="text-white! text-4xl! md:text-6xl! font-bold! mb-6!">
                 Find Your Dream <span className="text-blue-400">Career</span> Fast
                 </Title>
                 
@@ -31,7 +31,7 @@ function LandingHero() {
                         size="large"
                         variant="borderless"
                         prefix={<SearchOutlined className="text-gray-400" />}
-                        className="flex-grow py-3 px-4 text-lg"
+                        className="grow py-3 px-4 text-lg"
                     />
                     <Divider orientation="vertical" className="hidden md:block h-10 border-gray-200" />
                     <Button 

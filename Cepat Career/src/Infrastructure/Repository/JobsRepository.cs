@@ -13,15 +13,16 @@ namespace Infrastructure.Repository
             context = appDbContext;
         }
 
-        public async Task<List<JobsDto>> GetAllJobs(
+        public async Task<GetAllJobsDto> GetAllJobs(
             int Page,
             int PageSize
         )
         {
+            var count = await context.Jobs.CountAsync();
             var jobs = await context.Jobs
             .OrderBy(j => j.Id)
-            .Take(PageSize)
             .Skip((Page - 1) * PageSize)
+            .Take(PageSize)
             .Select(j => new JobsDto
             {
                 Id = j.Id,
@@ -30,10 +31,15 @@ namespace Infrastructure.Repository
                 Description = j.Description,
                 Roles = j.Roles,
                 FileRequirements = j.FileRequirements,
-                DateCreated = j.DateCreated,
+                DateCreated = j.DateCreated
             }).ToListAsync();
 
-            return jobs;
+            return new GetAllJobsDto
+            {
+                Jobs= jobs,
+                TotalPages = (int)Math.Ceiling((double)count / PageSize),
+                TotalRecords = count
+            };
         }
 
         public async Task<JobsDto?> GetJobsById(

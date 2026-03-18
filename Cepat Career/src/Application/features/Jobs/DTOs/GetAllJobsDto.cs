@@ -1,14 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Application.features.Jobs.DTOs
 {
-    public class JobsDto
+    public class GetAllJobsDto
     {
-        public int Id {get; set;}
-        public Guid JobId {set; get;}
-        public string? Title {set; get;}
-        public string? Description {set; get;}
-        public string? Roles {set; get;}
-        public string? FileRequirements {set; get;}
-        public DateTime DateCreated {set; get;}
+        public List<JobsDto> Jobs {get; set;} = [];
+        public int TotalPages {get; set;}
+        public int TotalRecords {get; set;}
     }
 }

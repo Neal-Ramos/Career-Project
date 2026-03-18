@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetchJobs, fetchJobsById } from "../API/Jobs"
-import type { IJob } from "../global/IJobs"
+import type { FetchJobs, IJob } from "../global/IJobs"
 
 
 export const useJobs = (Page: number, PageSize: number) => {
-    return useQuery<IJob[]>({
-        queryKey: ["Jobs"],
+    return useQuery<FetchJobs>({
+        queryKey: ["Jobs", Page, PageSize],
         queryFn: () => fetchJobs(Page, PageSize),
         staleTime: 1000 * 60 * 5,
         refetchOnWindowFocus: false,
