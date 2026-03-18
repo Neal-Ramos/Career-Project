@@ -6,7 +6,8 @@ namespace Application.commons.IRepository
     {
         Task<GetAllJobsDto> GetAllJobs(
             int Page,
-            int PageSize
+            int PageSize,
+            string? Search
         );
         Task<JobsDto?> GetJobsById(
             Guid JobId

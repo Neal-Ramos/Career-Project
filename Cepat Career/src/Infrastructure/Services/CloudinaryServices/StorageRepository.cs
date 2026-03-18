@@ -20,7 +20,7 @@ namespace Infrastructure.Services
             _cloudinary.Api.Secure = true;
         }
 
-        public async Task<UploadResponse> UploadAsync(
+        public async Task<UploadAsyncDto> UploadAsync(
             string FileName,
             string Name,
             string ContentType,
@@ -39,7 +39,7 @@ namespace Infrastructure.Services
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
                 throw new Exception(result.Error?.Message);
 
-            return new UploadResponse
+            return new UploadAsyncDto
             {
                 PublicId = result.PublicId,
                 Path = result.DisplayName

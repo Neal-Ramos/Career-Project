@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Application.commons.IServices
 {
-    public class UploadResponse
+    public class UploadAsyncDto
     {
         public string PublicId {get; set;} = null!;
         public string Path {get; set;} = null!;

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace Domain.Entities
 {
@@ -6,9 +7,9 @@ namespace Domain.Entities
     {
         public int Id {get; set;}
         public Guid JobId {set; get;} = Guid.NewGuid();
-        public string? Title {set; get;}
+        public string Title {set; get;} = null!;
         public string? Description {set; get;}
-        public string? Roles {set; get;}
+        public string Roles {set; get;} = JsonSerializer.Serialize("[]");
         public string? FileRequirements {set; get;}
         public DateTime DateCreated {set; get;} = DateTime.UtcNow;
         public string? CreatedBy {get; set;}

@@ -1,11 +1,12 @@
 import axios from "axios"
 
 
-export const fetchJobs = async(Page: number, PageSize: number) => {
+export const fetchJobs = async(Page: number, PageSize: number, Search?: string) => {
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/Jobs/GetJobs`, {
         params:{
             Page: Page,
-            PageSize: PageSize
+            PageSize: PageSize,
+            Search: Search
         }
     })
     return res.data.data

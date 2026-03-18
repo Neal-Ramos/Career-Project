@@ -2,7 +2,7 @@ namespace Application.commons.IServices
 {
     public interface IStorageRepository
     {
-        Task<UploadResponse> UploadAsync(
+        Task<UploadAsyncDto> UploadAsync(
             string FileName,
             string Name,
             string ContentType,

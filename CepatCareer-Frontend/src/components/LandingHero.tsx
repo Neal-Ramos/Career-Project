@@ -1,12 +1,25 @@
-import RocketOutlined from "@ant-design/icons/lib/icons/RocketOutlined"
 import SearchOutlined from "@ant-design/icons/lib/icons/SearchOutlined"
-import Button from "antd/es/button/Button"
-import Divider from "antd/es/divider"
 import Input from "antd/es/input/Input"
 import Paragraph from "antd/es/typography/Paragraph"
 import Title from "antd/es/typography/Title"
+import { useEffect, useState } from "react"
 
-function LandingHero() {
+interface LandingHero {
+    setSearch: Function
+}
+
+function LandingHero({setSearch}: LandingHero) {
+    const [debounce, setDebounce] = useState("")
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setSearch(debounce)
+        }, 500)
+        return () => {
+            clearTimeout(handler)
+        }
+    },[debounce])
+
+
     return(
         <div className="relative overflow-hidden bg-[#001529] pb-20 pt-16 lg:pt-32">
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -32,16 +45,11 @@ function LandingHero() {
                         variant="borderless"
                         prefix={<SearchOutlined className="text-gray-400" />}
                         className="grow py-3 px-4 text-lg"
+                        value={debounce}
+                        onChange={(e) => {
+                            setDebounce(e.target.value)
+                        }}
                     />
-                    <Divider orientation="vertical" className="hidden md:block h-10 border-gray-200" />
-                    <Button 
-                        type="primary" 
-                        size="large" 
-                        icon={<RocketOutlined />}
-                        className="w-full md:w-auto h-full px-8 rounded-xl font-semibold shadow-lg shadow-blue-500/30"
-                    >
-                        Search Jobs
-                    </Button>
                 </div>
                 <div className="mt-4 flex flex-wrap justify-center gap-4 text-gray-400 text-sm">
                     <span>Popular:</span>

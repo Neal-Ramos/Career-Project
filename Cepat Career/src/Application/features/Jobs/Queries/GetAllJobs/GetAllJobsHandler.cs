@@ -19,7 +19,8 @@ namespace Application.features.Jobs.Queries.GetAllJobs
         {
             var result = await _jobsRepository.GetAllJobs(
                 Page:req.Page,
-                PageSize:req.PageSize
+                PageSize:req.PageSize,
+                Search: req.Search
             );
             return result;
         }

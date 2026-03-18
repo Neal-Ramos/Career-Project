@@ -1,5 +1,4 @@
 using Application.features.JobApplications.DTOs;
-using Domain.enums;
 
 namespace Application.commons.IRepository
 {

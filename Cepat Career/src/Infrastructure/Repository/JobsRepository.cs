@@ -15,11 +15,15 @@ namespace Infrastructure.Repository
 
         public async Task<GetAllJobsDto> GetAllJobs(
             int Page,
-            int PageSize
+            int PageSize,
+            string? Search
         )
         {
-            var count = await context.Jobs.CountAsync();
-            var jobs = await context.Jobs
+            var query = context.Jobs.AsQueryable();
+            if (!string.IsNullOrEmpty(Search))query = query.Where(j => j.Title.Contains(Search) || j.Roles.Contains(Search));
+
+            var count = await query.CountAsync();
+            var jobs = await query
             .OrderBy(j => j.Id)
             .Skip((Page - 1) * PageSize)
             .Take(PageSize)

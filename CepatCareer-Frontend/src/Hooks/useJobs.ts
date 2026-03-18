@@ -3,10 +3,10 @@ import { fetchJobs, fetchJobsById } from "../API/Jobs"
 import type { FetchJobs, IJob } from "../global/IJobs"
 
 
-export const useJobs = (Page: number, PageSize: number) => {
+export const useJobs = (Page: number, PageSize: number, Search?: string) => {
     return useQuery<FetchJobs>({
-        queryKey: ["Jobs", Page, PageSize],
-        queryFn: () => fetchJobs(Page, PageSize),
+        queryKey: ["Jobs", Page, PageSize, Search],
+        queryFn: () => fetchJobs(Page, PageSize, Search),
         staleTime: 1000 * 60 * 5,
         refetchOnWindowFocus: false,
     })

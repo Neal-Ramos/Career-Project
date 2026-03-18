@@ -20,13 +20,15 @@ namespace API.controllers
         [HttpGet("GetJobs")]
         public async Task<IActionResult> GetAllJobs(
             CancellationToken cancellationToken,
+            [FromQuery] string? Search,
             [FromQuery] int Page = 1,
             [FromQuery] int PageSize = 5
         )
         {
             var query = new GetAllJobsQuery{
                 Page = Page,
-                PageSize = PageSize
+                PageSize = PageSize,
+                Search = Search
             };
             var result = await _mediatR.Send(query, cancellationToken);
 

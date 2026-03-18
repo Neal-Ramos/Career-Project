@@ -1,4 +1,4 @@
-import { Button, Card, Spin, Tag, Typography } from 'antd';
+import { Button, Card, Tag, Typography } from 'antd';
 import { NormalizeDate } from '../helpers/NormalizeDate';
 import { useNavigate } from 'react-router-dom';
 const { Title, Text, Paragraph } = Typography;
@@ -9,31 +9,10 @@ interface JobsCards {
     roles: {Name: string, Level: string}[]
     description: string
     jobGuid: string
-    isLoading: boolean
 }
 
-function JobsCard({title, dateCreated, roles, description, jobGuid, isLoading}:JobsCards){
+function JobsCard({title, dateCreated, roles, description, jobGuid}:JobsCards){
     const navigate = useNavigate();
-
-    if(isLoading){
-        return(
-            <Card
-                className="h-full! border! border-slate-200! shadow-sm! rounded-xl! overflow-hidden! flex! flex-col!"
-                styles={{ 
-                    body: {
-                        padding: '28px', 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        height: '100%', 
-                        flex: 1
-                    } 
-                }
-            }
-            >
-                <Spin size='large'/>
-            </Card>
-        )
-    }
 
     return(
         <Card
