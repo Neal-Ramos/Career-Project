@@ -559,3 +559,6 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Deb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\APi.pdb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\APi.genruntimeconfig.cache
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\ref\APi.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
