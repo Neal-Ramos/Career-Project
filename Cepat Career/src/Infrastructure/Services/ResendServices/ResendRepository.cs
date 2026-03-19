@@ -24,10 +24,18 @@ namespace Infrastructure.Services.ResendServices
             string HtmlContent
         )
         {
+            var message = new EmailMessage();
+
+            message.From = "service@resend.dev";
+            message.To.Add(To);
+            message.Subject = Subject;
+            message.HtmlBody = HtmlContent;
+
+            var send = await _resend.EmailSendAsync(message);
 
             return new SentEmailDto
             {
-                
+                IsSuccess = send.Success
             };
         }
     }

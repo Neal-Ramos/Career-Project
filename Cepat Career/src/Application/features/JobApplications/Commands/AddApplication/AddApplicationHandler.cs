@@ -10,11 +10,17 @@ namespace Application.features.JobApplications.Commands.AddApplication
     {
         private readonly IApplicationsRepository _applicationsRepository;
         private readonly IStorageRepository _storageRepository;
+        private readonly ISendEmail _sendEmail;
 
-        public AddApplicationHandler(IApplicationsRepository applicationsRepository, IStorageRepository storageRepository)
+        public AddApplicationHandler(
+            IApplicationsRepository applicationsRepository,
+            IStorageRepository storageRepository,
+            ISendEmail sendEmail
+        )
         {
             _applicationsRepository = applicationsRepository;
             _storageRepository = storageRepository;
+            _sendEmail = sendEmail;
         }
 
         public async Task<JobApplicationDto> Handle(AddApplicationCommand req, CancellationToken cancellationToken)
@@ -41,6 +47,11 @@ namespace Application.features.JobApplications.Commands.AddApplication
                 GraduationYear: req.GraduationYear,
                 SubmittedFile: JsonSerializer.Serialize(SubmittedFile),
                 JobId: req.JobId
+            );
+            await _sendEmail.SendEmailAsync(
+                To: req.Email,
+                Subject: "Application Submitted!",
+                HtmlContent: "<div><strong>Submit Application<strong> 👋🏻 from .NET</div>"
             );
             return result;
         }

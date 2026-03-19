@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Application.commons.DTOs
+namespace Application.commons.IRepository
 {
-    public class SentEmailDto
+    public interface IAdminAccountsRepository
     {
-        public bool IsSuccess {get; set;}
+        
     }
 }

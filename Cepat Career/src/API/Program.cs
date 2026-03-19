@@ -19,8 +19,6 @@ builder.Services.AddControllers();
 
 var isDevelopment = builder.Environment.IsDevelopment();
 
-builder.Services.AddScoped<IDbSeeder, DbSeeder>();
-
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration, isDevelopment);
 

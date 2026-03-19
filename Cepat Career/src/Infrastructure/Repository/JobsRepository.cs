@@ -35,7 +35,8 @@ namespace Infrastructure.Repository
                 Description = j.Description,
                 Roles = j.Roles,
                 FileRequirements = j.FileRequirements,
-                DateCreated = j.DateCreated
+                DateCreated = j.DateCreated,
+
             }).ToListAsync();
 
             return new GetAllJobsDto

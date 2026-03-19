@@ -12,6 +12,7 @@ namespace Infrastructure.Persistence
 
         public DbSet<Jobs> Jobs => Set<Jobs>();
         public DbSet<JobApplications> JobApplications => Set<JobApplications>();
+        public DbSet<AdminAccounts> AdminAccounts => Set<AdminAccounts>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

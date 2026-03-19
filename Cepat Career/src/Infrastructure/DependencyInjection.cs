@@ -17,7 +17,7 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection services,
             IConfiguration configuration,
-            bool isDevelopment)
+            bool isDevelopment) 
         {
             //Register DbContext
             services.AddDbContext<AppDbContext>((sp, options) =>
@@ -37,6 +37,11 @@ namespace Infrastructure
             //Register Repositories
             services.AddScoped<IJobsRepository, JobsRepository>();
             services.AddScoped<IApplicationsRepository, JobApplicationsRepository>();
+            services.AddScoped<IAdminAccountsRepository, AdminAccountsRepository>();
+
+            //Register Seeder
+            services.AddScoped<IDbSeeder, DbSeeder>();
+            
 
             //Register Cloudinary
             services.Configure<CloudinarySettings>(
