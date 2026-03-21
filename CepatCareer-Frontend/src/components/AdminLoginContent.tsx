@@ -93,7 +93,7 @@ function AdminLoginContent(){
                     block 
                     loading={isLoading}
                     icon={<ArrowRightOutlined />}
-                    iconPosition="end"
+                    iconPlacement="end"
                     style={{ 
                       height: '52px', 
                       fontWeight: '700', 
