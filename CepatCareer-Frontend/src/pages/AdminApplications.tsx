@@ -1,12 +1,15 @@
 import { FilterOutlined, SearchOutlined } from "@ant-design/icons"
-import { Badge, Button, Card, Col, Input, Row, Select, Space, Table } from "antd"
+import { Avatar, Badge, Button, Card, Col, Input, Row, Select, Space, Spin, Table } from "antd"
 import { Option } from "antd/es/mentions"
 import type { ColumnsType } from "antd/es/table"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
 import { useState } from "react"
+import { useApplication } from "../Hooks/useApplications"
+import type { IJobApplication } from "../global/IJobApplications"
 
 function AdminApplications(){
+    const {data, isLoading, isError, error} = useApplication(1,5)
     const [searchText, setSearchText] = useState("")
     const [statusFilter, setStatusFilter] = useState<string|null>()
     const [jobFilter, setJobFilter] = useState<string|null>()
@@ -15,11 +18,25 @@ function AdminApplications(){
         {label: "test", key: 2},
         {label: "test", key: 3},
     ]
-    const columns: ColumnsType = [
-
+    const columns: ColumnsType<IJobApplication> = [
+        {
+            title: 'Applicant',
+            key: 'applicant',
+            render: (_, record) => (
+                <Space>
+                    <Avatar>{record.email?.charAt(0)}</Avatar>
+                    <div>
+                        <Text strong>{record.lastName}</Text>
+                        <Text type="secondary">{record.firstName}</Text>
+                    </div>
+                </Space>
+            )
+        }
     ]
-    const data: any = []
 
+
+    if (isLoading) return <Spin />
+    if (isError) return <div>Error: {String(error)}</div>
     return(
         <div style={{ padding: '24px' }}>
             <div style={{ marginBottom: '24px' }}>
@@ -65,7 +82,7 @@ function AdminApplications(){
                         </Col>
                         <Col xs={24} md={6} style={{ textAlign: 'right' }}>
                             <Space>
-                                <Badge count={data.length} overflowCount={999} color="#1677ff">
+                                <Badge count={data?.totalRecords} overflowCount={999} color="#1677ff">
                                     <Text type="secondary" style={{ marginRight: 8 }}>Results</Text>
                                 </Badge>
                                 <Button onClick={() => {
@@ -80,15 +97,15 @@ function AdminApplications(){
                 <Card variant="borderless" styles={{ body: { padding: 0 } }} style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
                     <Table
                         columns={columns}
-                        dataSource={data}
+                        dataSource={data?.applications}
                         pagination={{
-                            total: data.length,
+                            total: data?.totalRecords,
                             pageSize: 5,
                             showSizeChanger: true,
                             showTotal: (total) => `Total ${total} applicants`,
                             position: ['bottomRight']
                         }}
-                        scroll={{ x: 800 }} // Ensures horizontal scrolling on small mobile devices
+                        scroll={{ x: 800 }}
                     />
                 </Card>
             </div>
