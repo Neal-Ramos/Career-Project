@@ -82,7 +82,7 @@ function AdminApplications(){
                         columns={columns}
                         dataSource={data}
                         pagination={{
-                            total: data,
+                            total: data.length,
                             pageSize: 5,
                             showSizeChanger: true,
                             showTotal: (total) => `Total ${total} applicants`,

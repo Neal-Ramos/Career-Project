@@ -1,6 +1,8 @@
 using API.common.Responses;
 using Application.features.JobApplications.Commands.AddApplication;
 using Application.features.JobApplications.DTOs;
+using Application.features.JobApplications.Queries.GetApplications;
+using Azure;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,6 +54,33 @@ namespace API.controllers
 
             var result = await _mediator.Send(query, cancellationToken);
             
+            return Ok(new APIResponse<object>
+            {
+                Message = "Success",
+                Status = 200,
+                Data = result
+            });
+        }
+
+        [HttpGet("GetApplications")]
+        public async Task<IActionResult> GetApplications(
+            [FromQuery] string? FilterEmail,
+            [FromQuery] string? FilterJob,
+            [FromQuery] string? FilterStatus,
+            CancellationToken cancellationToken,
+            [FromQuery] int Page = 1,
+            [FromQuery] int PageSize = 5
+        ){
+            var query = new GetApplicationsQuery
+            {
+                Page = Page,
+                PageSize = PageSize,
+                FilterEmail = FilterEmail,
+                FilterJob = FilterJob,
+                FilterStatus = FilterStatus,
+            };
+
+            var result = await _mediator.Send(query, cancellationToken);
             return Ok(new APIResponse<object>
             {
                 Message = "Success",

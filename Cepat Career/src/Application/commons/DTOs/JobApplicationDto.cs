@@ -6,8 +6,8 @@ namespace Application.features.JobApplications.DTOs
 {
     public class JobApplicationDto
     {
-        public int Id {get; private set;}
-        public Guid ApplicationId {get; private set;}
+        public int Id {get; set;}
+        public Guid ApplicationId {get; set;}
         public string FirstName {get; set;} = null!;
         public string MiddleName {get; set;} = null!;
         public string LastName {get; set;} = null!;

@@ -17,7 +17,7 @@ namespace Application.commons.IRepository
             string SubmittedFile,
             Guid JobId
         );
-        Task<List<JobApplicationDto>> GetApplications(
+        Task<GetJobApplicationsDto> GetApplications(
             int Page,
             int PageSize,
             string? FilterEmail,
