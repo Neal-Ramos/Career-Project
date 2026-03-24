@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i7uYlLNS+/c=",
+  "dgSpecHash": "XUre+vl58mk=",
   "success": true,
-  "projectFilePath": "E:\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\HOME\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.24\\microsoft.netcore.app.ref.8.0.24.nupkg.sha512",
-    "C:\\Users\\HOME\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.24\\microsoft.windowsdesktop.app.ref.8.0.24.nupkg.sha512",
-    "C:\\Users\\HOME\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.24\\microsoft.aspnetcore.app.ref.8.0.24.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

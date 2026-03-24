@@ -1,3 +1,4 @@
+using Application.commons.DTOs;
 using Application.features.JobApplications.DTOs;
 
 namespace Application.commons.IRepository
@@ -15,6 +16,13 @@ namespace Application.commons.IRepository
             int GraduationYear,
             string SubmittedFile,
             Guid JobId
+        );
+        Task<List<JobApplicationDto>> GetApplications(
+            int Page,
+            int PageSize,
+            string? FilterEmail,
+            string? FilterJob,
+            string? FilterStatus
         );
     }
 }

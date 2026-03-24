@@ -1,4 +1,4 @@
-export interface IJob {
+export interface    IJob {
     applicants?: string,
     dateCreated: string,
     description: string,
