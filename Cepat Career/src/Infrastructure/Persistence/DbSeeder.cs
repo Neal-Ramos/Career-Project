@@ -264,6 +264,20 @@ namespace Infrastructure.Persistence
 
                 await context.SaveChangesAsync();
             }
+            if (!context.AdminAccounts.Any())
+            {
+                context.AdminAccounts.AddRange(
+                    new AdminAccounts
+                    {
+                        Email = "nealramos72",
+                        UserName = "Neal",
+                        Password = "admin",
+                        FirstName = BCrypt.Net.BCrypt.HashPassword("Neal"),
+                        LastName = "Ramos",
+                    }
+                );
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

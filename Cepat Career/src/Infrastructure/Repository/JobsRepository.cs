@@ -51,8 +51,8 @@ namespace Infrastructure.Repository
             Guid JobId
         )
         {
-            var result = context.Jobs
-                .FirstOrDefault(j => j.JobId == JobId);
+            var result = await context.Jobs
+                .FirstOrDefaultAsync(j => j.JobId == JobId);
             
             if(result == null)
             {

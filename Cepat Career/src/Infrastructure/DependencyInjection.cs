@@ -4,6 +4,8 @@ using Infrastructure.Persistence;
 using Infrastructure.Repository;
 using Infrastructure.Services;
 using Infrastructure.Services.CloudinaryServices;
+using Infrastructure.Services.CodeGenerator;
+using Infrastructure.Services.HashingService;
 using Infrastructure.Services.ResendServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,6 +40,8 @@ namespace Infrastructure
             services.AddScoped<IJobsRepository, JobsRepository>();
             services.AddScoped<IApplicationsRepository, JobApplicationsRepository>();
             services.AddScoped<IAdminAccountsRepository, AdminAccountsRepository>();
+            services.AddScoped<IGenerateCode, CodeGeneratorRepository>();
+            services.AddScoped<IHashingRepository, BcryptRepository>();
 
             //Register Seeder
             services.AddScoped<IDbSeeder, DbSeeder>();

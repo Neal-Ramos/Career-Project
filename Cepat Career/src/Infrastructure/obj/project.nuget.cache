@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "MT8mH0e/a0w=",
+  "dgSpecHash": "BAs8hW9E8xo=",
   "success": true,
   "projectFilePath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\cloudinarydotnet\\1.28.0\\cloudinarydotnet.1.28.0.nupkg.sha512",
     "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\mediatr\\14.1.0\\mediatr.14.1.0.nupkg.sha512",
