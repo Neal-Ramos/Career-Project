@@ -15,7 +15,8 @@ namespace Infrastructure.Persistence.configurations
             builder.ToTable("Jobs");
 
             builder.HasKey(j => j.Id);
-            builder.HasIndex(j => j.JobId).IsUnique();
+            builder.HasIndex(j => j.JobId)
+                .IsUnique();
 
             builder.Property(j => j.Id)
                 .ValueGeneratedOnAdd();

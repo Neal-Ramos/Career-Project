@@ -14,6 +14,40 @@ namespace Infrastructure.Persistence.configurations
         {
             builder.ToTable("AdminAccounts");
             
+            builder.HasKey(a => a.Id);
+            builder.HasIndex(a => a.AdminId)
+                .IsUnique();
+
+
+            builder.Property(a => a.Id)
+                .ValueGeneratedOnAdd();
+                
+            builder.Property(a => a.AdminId)
+                .HasDefaultValueSql("NEWID()");
+
+            builder.Property(a => a.Email)
+                .IsRequired();
+
+            builder.Property(a => a.UserName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(a => a.Password)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(a => a.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(a => a.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(a => a.MiddleName)
+                .IsRequired()
+                .HasMaxLength(100);
+
         }
     }
 }
