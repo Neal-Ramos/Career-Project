@@ -14,5 +14,13 @@ namespace Infrastructure.Services.HashingService
         {
             return Task.FromResult(BCrypt.Net.BCrypt.HashPassword(str));
         }
+
+        public Task<Boolean> VerifyString(
+            string str,
+            string reference
+        )
+        {
+            return Task.FromResult(BCrypt.Net.BCrypt.Verify(str, reference));
+        }
     }
 }

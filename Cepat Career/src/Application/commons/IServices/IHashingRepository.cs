@@ -8,5 +8,9 @@ namespace Application.commons.IServices
     public interface IHashingRepository
     {
         Task<string> HashString(string str);
+        Task<Boolean> VerifyString(
+            string str,
+            string reference
+        );
     }
 }

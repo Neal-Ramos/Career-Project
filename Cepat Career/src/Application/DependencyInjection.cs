@@ -12,6 +12,7 @@ namespace Application
                 cfg.RegisterServicesFromAssembly(
                     Assembly.GetExecutingAssembly()));
 
+            services.AddAutoMapper(typeof(MappingProfile));
             return services;
         }
     }
