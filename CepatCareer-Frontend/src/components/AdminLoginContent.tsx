@@ -3,12 +3,22 @@ import { Badge, Button, Card, Checkbox, Flex, Form, Input } from "antd"
 import { Content } from "antd/es/layout/layout"
 import Text from "antd/es/typography/Text"
 import Title from "antd/es/typography/Title"
+import OtpModal from "./OtpModal"
+import { useState } from "react"
+
+interface AdminLoginContent{
+  showOtpModal: Function
+}
 
 function AdminLoginContent(){
+    const [otpModal, setOtpModal] = useState(false)
+    const [codeOwner, setCodeOwner] = useState<string>("")
     const isLoading = false
 
-    const onFinish = () => {
-
+    const onFinish = (value: {password: string, username: string, remember: boolean}) => {
+      console.log(value)
+      setOtpModal(true)
+      setCodeOwner(value.username)
     }
 
     return(
@@ -48,7 +58,7 @@ function AdminLoginContent(){
               <Form
                 name="admin_login_form"
                 layout="vertical"
-                onFinish={onFinish}
+                onFinish={(e) => onFinish(e)}
                 size="large"
               >
                 <Form.Item
@@ -113,6 +123,7 @@ function AdminLoginContent(){
               </Text>
             </div>
           </div>
+          <OtpModal isModalVisible={otpModal} setIsModalVisible={setOtpModal} codeOwner={codeOwner}/>
         </Content>
     )
 }
