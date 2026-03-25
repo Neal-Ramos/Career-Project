@@ -45,9 +45,14 @@ namespace Infrastructure.Persistence.configurations
                 .HasMaxLength(100);
 
             builder.Property(a => a.MiddleName)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(100);
 
+            //relations
+            builder.HasMany(a => a.AuthCodes)
+                .WithOne(a => a.Owner)
+                .HasForeignKey(a => a.OwnerId)
+                .HasPrincipalKey(a => a.AdminId);
         }
     }
 }

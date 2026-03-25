@@ -9,10 +9,11 @@ namespace Domain.Entities
     {
         public int Id {get; private set;}
         public Guid AuthCodeId {get; private set;}
-        public string OwnerUsername {get; set;} = null!;
+        public string Code {get; set;} = null!;
         public DateTime DateCreated {get; set;}
+        public DateTime DateExpiry {get; set;}
         public DateTime? DateUsed {get; set;}
-        public bool Used {get; set;} = false;
+        public bool IsUsed {get; set;} = false;
         
         //Relations
         public Guid OwnerId {get; set;}

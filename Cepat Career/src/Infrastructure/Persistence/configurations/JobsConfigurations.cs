@@ -49,8 +49,7 @@ namespace Infrastructure.Persistence.configurations
             builder.Property(j => j.EditedBy);
             
             //relation
-            builder
-                .HasMany(j => j.JobApplications)
+            builder.HasMany(j => j.JobApplications)
                 .WithOne(a => a.Job)
                 .HasForeignKey(a => a.JobId)
                 .HasPrincipalKey(j => j.JobId);
