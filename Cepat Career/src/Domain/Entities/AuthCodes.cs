@@ -8,7 +8,7 @@ namespace Domain.Entities
     public class AuthCodes
     {
         public int Id {get; private set;}
-        public Guid AuthCodeId {get; private set;}
+        public Guid AuthCodeId {get; private set;} = Guid.NewGuid();
         public string Code {get; set;} = null!;
         public DateTime DateCreated {get; set;}
         public DateTime DateExpiry {get; set;}
