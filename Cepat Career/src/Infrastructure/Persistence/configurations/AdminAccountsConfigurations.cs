@@ -23,7 +23,8 @@ namespace Infrastructure.Persistence.configurations
                 .ValueGeneratedOnAdd();
                 
             builder.Property(a => a.AdminId)
-                .HasDefaultValueSql("NEWID()");
+                .HasDefaultValueSql("NEWID()")
+                .IsRequired();
 
             builder.Property(a => a.Email)
                 .IsRequired();
@@ -52,6 +53,11 @@ namespace Infrastructure.Persistence.configurations
             builder.HasMany(a => a.AuthCodes)
                 .WithOne(a => a.Owner)
                 .HasForeignKey(a => a.OwnerId)
+                .HasPrincipalKey(a => a.AdminId);
+
+            builder.HasMany(a => a.CreatedJobs)
+                .WithOne(j => j.CreatedBy)
+                .HasForeignKey(j => j.CreatorId)
                 .HasPrincipalKey(a => a.AdminId);
         }
     }

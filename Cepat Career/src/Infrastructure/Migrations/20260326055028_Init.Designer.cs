@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260319072039_AdminAccounts")]
-    partial class AdminAccounts
+    [Migration("20260326055028_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,9 @@ namespace Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid>("AdminId")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -42,26 +44,71 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdminAccounts");
+                    b.HasIndex("AdminId")
+                        .IsUnique();
+
+                    b.ToTable("AdminAccounts", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.AuthCodes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("AuthCodeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateExpiry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateUsed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("AuthCodes");
                 });
 
             modelBuilder.Entity("Domain.Entities.JobApplications", b =>
@@ -101,6 +148,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FileSubmitted")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -120,6 +168,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MiddleName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -136,9 +185,8 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationId");
-
-                    b.HasIndex("JobId");
+                    b.HasIndex("ApplicationId")
+                        .IsUnique();
 
                     b.ToTable("JobApplications", (string)null);
                 });
@@ -151,10 +199,8 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<Guid>("CreatorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -189,22 +235,55 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasAlternateKey("JobId");
+
                     b.HasIndex("JobId")
                         .IsUnique();
 
                     b.ToTable("Jobs", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.AuthCodes", b =>
+                {
+                    b.HasOne("Domain.Entities.AdminAccounts", "Owner")
+                        .WithMany("AuthCodes")
+                        .HasForeignKey("OwnerId")
+                        .HasPrincipalKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
             modelBuilder.Entity("Domain.Entities.JobApplications", b =>
                 {
                     b.HasOne("Domain.Entities.Jobs", "Job")
                         .WithMany("JobApplications")
-                        .HasForeignKey("JobId")
-                        .HasPrincipalKey("JobId")
+                        .HasForeignKey("ApplicationId")
+                        .HasPrincipalKey("CreatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Job");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Jobs", b =>
+                {
+                    b.HasOne("Domain.Entities.AdminAccounts", "CreatedBy")
+                        .WithMany("CreatedJobs")
+                        .HasForeignKey("CreatorId")
+                        .HasPrincipalKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("Domain.Entities.AdminAccounts", b =>
+                {
+                    b.Navigation("AuthCodes");
+
+                    b.Navigation("CreatedJobs");
                 });
 
             modelBuilder.Entity("Domain.Entities.Jobs", b =>

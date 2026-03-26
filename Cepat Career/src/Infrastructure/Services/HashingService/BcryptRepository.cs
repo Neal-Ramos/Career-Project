@@ -6,7 +6,7 @@ using Application.commons.IServices;
 
 namespace Infrastructure.Services.HashingService
 {
-    public class BcryptRepository: IHashingRepository
+    public class BcryptRepository: IHashingService
     {
         public Task<string> HashString(
             string str

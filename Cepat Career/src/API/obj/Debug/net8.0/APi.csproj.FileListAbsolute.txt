@@ -385,8 +385,11 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Deb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\APi.runtimeconfig.json
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\APi.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\APi.pdb
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\CloudinaryDotNet.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\Humanizer.dll
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\MediatR.dll
@@ -572,4 +575,3 @@ C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Deb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\APi.pdb
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\APi.genruntimeconfig.cache
 C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\obj\Debug\net8.0\ref\APi.dll
-C:\Users\CEPAT-OJT6\Documents\GitHub\Career-Project\Cepat Career\src\API\bin\Debug\net8.0\BCrypt.Net-Next.dll

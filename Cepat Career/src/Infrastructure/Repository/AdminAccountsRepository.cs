@@ -22,7 +22,6 @@ namespace Infrastructure.Repository
             return await _context.AdminAccounts
                 .Select(a => new AdminAccountsDto
                 {
-                    Id = a.Id,
                     AdminId = a.AdminId,
                     Email = a.Email,
                     UserName = a.UserName,

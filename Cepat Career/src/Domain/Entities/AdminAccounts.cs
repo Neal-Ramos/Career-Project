@@ -18,5 +18,6 @@ namespace Domain.Entities
 
         //relations
         public ICollection<AuthCodes>? AuthCodes {get; set;}
+        public ICollection<Jobs>? CreatedJobs {get; set;}
     }
 }

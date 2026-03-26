@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Application.commons.IServices
 {
-    public interface IHashingRepository
+    public interface IHashingService
     {
         Task<string> HashString(string str);
         Task<Boolean> VerifyString(

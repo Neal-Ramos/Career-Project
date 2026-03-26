@@ -7,8 +7,7 @@ namespace Application.commons.DTOs
 {
     public class AuthCodeDto
     {
-        public int Id {get; private set;}
-        public Guid AuthCodeId {get; private set;}
+        public Guid AuthCodeId {get; set;}
         public string Code {get; set;} = null!;
         public DateTime DateCreated {get; set;}
         public DateTime DateExpiry {get; set;}

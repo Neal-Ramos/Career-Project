@@ -6,7 +6,7 @@ using Application.commons.DTOs;
 
 namespace Application.commons.IServices
 {
-    public interface IGenerateCode
+    public interface IGenerateCodeService
     {
         Task<GenerateCodeDto> Generate();
     }

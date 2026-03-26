@@ -15,10 +15,10 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddControllers();
 
 var isDevelopment = builder.Environment.IsDevelopment();
 
+builder.Services.AddControllers();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration, isDevelopment);
 

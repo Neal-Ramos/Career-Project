@@ -5,7 +5,7 @@ using Infrastructure.Services.CloudinaryServices;
 using Microsoft.Extensions.Options;
 namespace Infrastructure.Services
 {
-    public class StorageRepository: IStorageRepository
+    public class StorageRepository: IStorageService
     {
         private readonly Cloudinary _cloudinary;
         public StorageRepository(IOptions<CloudinarySettings> options)

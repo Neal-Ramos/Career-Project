@@ -10,7 +10,7 @@ using Resend;
 
 namespace Infrastructure.Services.ResendServices
 {
-    public class ResendRepository: ISendEmail
+    public class ResendRepository: ISendEmailService
     {
         private readonly IResend _resend;
         public ResendRepository(IResend resend)

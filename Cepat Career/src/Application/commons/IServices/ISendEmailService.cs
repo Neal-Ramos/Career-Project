@@ -6,7 +6,7 @@ using Application.commons.DTOs;
 
 namespace Application.commons.IServices
 {
-    public interface ISendEmail
+    public interface ISendEmailService
     {
         Task<SentEmailDto> SendEmailAsync(
             string To,

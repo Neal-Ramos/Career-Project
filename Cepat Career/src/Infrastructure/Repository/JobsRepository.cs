@@ -29,7 +29,6 @@ namespace Infrastructure.Repository
             .Take(PageSize)
             .Select(j => new JobsDto
             {
-                Id = j.Id,
                 JobId = j.JobId,
                 Title = j.Title,
                 Description = j.Description,

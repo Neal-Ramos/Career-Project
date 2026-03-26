@@ -42,13 +42,14 @@ namespace Infrastructure.Persistence.configurations
             builder.Property(j => j.DateCreated)
                 .HasDefaultValueSql("GETUTCDATE()");
 
-            builder.Property(j => j.CreatedBy)
-                .HasMaxLength(200)
-                .IsRequired();
-
             builder.Property(j => j.EditedBy);
             
             //relation
+            builder.HasOne(j => j.CreatedBy)
+                .WithMany(a => a.CreatedJobs)
+                .HasForeignKey(a => a.CreatorId)
+                .HasPrincipalKey(j => j.AdminId);
+
             builder.HasMany(j => j.JobApplications)
                 .WithOne(a => a.Job)
                 .HasForeignKey(a => a.JobId)

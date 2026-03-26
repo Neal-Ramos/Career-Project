@@ -40,8 +40,10 @@ namespace Infrastructure
             services.AddScoped<IJobsRepository, JobsRepository>();
             services.AddScoped<IApplicationsRepository, JobApplicationsRepository>();
             services.AddScoped<IAdminAccountsRepository, AdminAccountsRepository>();
-            services.AddScoped<IGenerateCode, CodeGeneratorRepository>();
-            services.AddScoped<IHashingRepository, BcryptRepository>();
+            services.AddScoped<IAuthCodeRepository, AuthCodeRepository>();
+
+            services.AddScoped<IGenerateCodeService, CodeGeneratorRepository>();
+            services.AddScoped<IHashingService, BcryptRepository>();
 
             //Register Seeder
             services.AddScoped<IDbSeeder, DbSeeder>();
@@ -51,7 +53,7 @@ namespace Infrastructure
             services.Configure<CloudinarySettings>(
                 configuration.GetSection("CloudinarySettings")
             );
-            services.AddScoped<IStorageRepository, StorageRepository>();
+            services.AddScoped<IStorageService, StorageRepository>();
 
             //Register Resend
             services.AddOptions();
@@ -61,7 +63,7 @@ namespace Infrastructure
             {
                 options.ApiToken = configuration["Resend:ApiKey"]!;
             });
-            services.AddScoped<ISendEmail, ResendRepository>();
+            services.AddScoped<ISendEmailService, ResendRepository>();
 
             return services;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.features.Jobs.DTOs;
 
 namespace Application.commons.DTOs
 {
@@ -15,6 +16,9 @@ namespace Application.commons.DTOs
         public string FirstName {get; set;} = null!;
         public string LastName {get; set;} = null!;
         public string? MiddleName {get; set;}
+
+        //relations
         public ICollection<AuthCodeDto>? AuthCodes {get; set;}
+        public ICollection<JobsDto>? CreatedJobs {get; set;}
     }
 }

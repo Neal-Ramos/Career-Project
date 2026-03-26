@@ -8,6 +8,6 @@ namespace Application.commons.DTOs
     public class GenerateCodeDto
     {
         public string Code {get; set;} = null!;
-        public long DateExpiry {get; set;}
+        public DateTime DateExpiry {get; set;}
     }
 }

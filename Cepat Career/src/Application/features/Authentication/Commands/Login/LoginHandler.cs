@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.commons.DTOs;
 using Application.commons.IRepository;
 using Application.commons.IServices;
+using Application.exeptions;
 using AutoMapper;
 using MediatR;
 
@@ -13,14 +14,23 @@ namespace Application.features.Authentication.Commands.Login
     public class LoginHandler: IRequestHandler<LoginCommand, LoginDto>
     {
         private readonly IAdminAccountsRepository _adminAccounts;
-        private readonly IHashingRepository _hashingRepository;
+        private readonly IHashingService _IHashingService;
+        private readonly IAuthCodeRepository _authCode;
+        private readonly IGenerateCodeService _generateCode;
+        private readonly IMapper _mapper;
         public LoginHandler(
             IAdminAccountsRepository adminAccountsRepository,
-            IHashingRepository hashingRepository
+            IHashingService IHashingService,
+            IAuthCodeRepository authCodeRepository,
+            IGenerateCodeService generateCodeService,
+            IMapper mapper
         )
         {
             _adminAccounts = adminAccountsRepository;
-            _hashingRepository = hashingRepository;
+            _IHashingService = IHashingService;
+            _authCode = authCodeRepository;
+            _generateCode = generateCodeService;
+            _mapper = mapper;
         }
 
         public async Task<LoginDto> Handle(
@@ -28,13 +38,25 @@ namespace Application.features.Authentication.Commands.Login
             CancellationToken cancellationToken
         )
         {
-            var account = await _adminAccounts.GetByUsername(req.UserName)??
-            throw new UnauthorizedAccessException("Invalid Credentials");
+            var account = await _adminAccounts.GetByUsername(req.UserName);
+            var code = await _generateCode.Generate();
 
-            var isVerified = await _hashingRepository.VerifyString(req.Password, account.Password);
-            if(isVerified == false)throw new UnauthorizedAccessException("Invalid Credentials");
+            if(
+                account == null ||
+                !await _IHashingService.VerifyString(req.Password, account.Password)
+            )
+            {
+                throw new InvalidCredentialsExeption();
+            }
+
+            await _authCode.CreateCodeFor(
+                Code: code.Code,
+                DateCreated: DateTime.UtcNow,
+                DateExpiry: code.DateExpiry,
+                OwnerId: account.AdminId
+            );
             
-            return new LoginDto{};
+            return _mapper.Map<LoginDto>(account);
         }
     }
 }

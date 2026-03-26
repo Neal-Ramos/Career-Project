@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Application.commons.DTOs;
+using Application.commons.IRepository;
+using Domain.Entities;
+using Infrastructure.Persistence;
+
+namespace Infrastructure.Repository
+{
+    public class AuthCodeRepository: IAuthCodeRepository
+    {
+        private readonly AppDbContext _context;
+        public AuthCodeRepository(AppDbContext appDbContext)
+        {
+            _context = appDbContext;
+        }
+
+        public async Task<AuthCodeDto> CreateCodeFor(
+            string Code,
+            DateTime DateCreated,
+            DateTime DateExpiry,
+            Guid OwnerId
+        )
+        {
+            var newCode = new AuthCodes
+            {
+                Code = Code,
+                DateCreated = DateCreated,
+                DateExpiry = DateExpiry,
+                OwnerId = OwnerId
+            };
+            await _context.AuthCodes.AddAsync(newCode);
+            _context.SaveChanges();
+
+            return new AuthCodeDto
+            {
+                AuthCodeId = newCode.AuthCodeId,
+                Code = newCode.Code,
+                DateCreated = newCode.DateCreated,
+                DateExpiry = newCode.DateExpiry,
+                DateUsed = newCode.DateUsed,
+                IsUsed = newCode.IsUsed,
+                OwnerId = newCode.OwnerId,
+            };
+        }
+    }
+}

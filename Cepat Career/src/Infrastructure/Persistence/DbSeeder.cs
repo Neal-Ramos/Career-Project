@@ -19,7 +19,23 @@ namespace Infrastructure.Persistence
 
         public async Task SeedAsync()
         {
-            if (!context.Jobs.Any())
+            
+            if (!context.AdminAccounts.Any())
+            {
+                context.AdminAccounts.AddRange(
+                    new AdminAccounts
+                    {
+                        Email = "nealramos72",
+                        UserName = "Neal",
+                        Password = BCrypt.Net.BCrypt.HashPassword("admin"),
+                        FirstName = "Neal",
+                        LastName = "Ramos",
+                    }
+                );
+                await context.SaveChangesAsync();
+            }
+            var admin = context.AdminAccounts.First();
+            if (!context.Jobs.Any() && admin != null)
             {
                 context.Jobs.AddRange(
                     new Jobs
@@ -37,7 +53,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Portfolio", Required = false }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -53,7 +69,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -70,7 +86,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Portfolio", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -87,7 +103,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Certifications", Required = false }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -102,7 +118,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Portfolio", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -118,7 +134,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Portfolio", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -134,7 +150,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -151,7 +167,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Portfolio", Required = false }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -166,7 +182,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -181,7 +197,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -198,7 +214,7 @@ namespace Infrastructure.Persistence
                             new { FileName = "Resume", Required = true },
                             new { FileName = "Certifications", Required = false }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -213,7 +229,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -228,7 +244,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -243,7 +259,7 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Portfolio", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     },
                     new Jobs
                     {
@@ -258,24 +274,10 @@ namespace Infrastructure.Persistence
                         {
                             new { FileName = "Resume", Required = true }
                         }),
-                        CreatedBy = "Admin"
+                        CreatedBy = admin
                     }
                 );
 
-                await context.SaveChangesAsync();
-            }
-            if (!context.AdminAccounts.Any())
-            {
-                context.AdminAccounts.AddRange(
-                    new AdminAccounts
-                    {
-                        Email = "nealramos72",
-                        UserName = "Neal",
-                        Password = "admin",
-                        FirstName = BCrypt.Net.BCrypt.HashPassword("Neal"),
-                        LastName = "Ramos",
-                    }
-                );
                 await context.SaveChangesAsync();
             }
         }

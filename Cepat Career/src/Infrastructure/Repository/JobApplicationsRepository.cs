@@ -14,10 +14,10 @@ namespace Infrastructure.Repository
 {
     public class JobApplicationsRepository: IApplicationsRepository
     {
-        private readonly AppDbContext context;
+        private readonly AppDbContext _context;
         public JobApplicationsRepository(AppDbContext appDbContext)
         {
-            context = appDbContext;
+            _context = appDbContext;
         }
         
         public async Task<JobApplicationDto> AddApplication(
@@ -46,8 +46,8 @@ namespace Infrastructure.Repository
                 FileSubmitted = FileSubmitted,
                 JobId = JobId
             };
-            await context.JobApplications.AddAsync(newApplication);
-            context.SaveChanges();
+            await _context.JobApplications.AddAsync(newApplication);
+            _context.SaveChanges();
 
             return new JobApplicationDto
             {
@@ -76,7 +76,7 @@ namespace Infrastructure.Repository
             string? FilterStatus
         )
         {
-            var query = context.JobApplications.AsQueryable();
+            var query = _context.JobApplications.AsQueryable();
 
             var count = await query.CountAsync();
             var applications = await query
@@ -85,7 +85,6 @@ namespace Infrastructure.Repository
             .Take(PageSize)
             .Select(a => new JobApplicationDto
             {
-                Id = a.Id,
                 ApplicationId = a.ApplicationId,
                 FirstName = a.FirstName,
                 MiddleName = a.MiddleName,

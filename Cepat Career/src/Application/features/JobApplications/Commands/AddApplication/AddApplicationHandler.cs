@@ -9,13 +9,13 @@ namespace Application.features.JobApplications.Commands.AddApplication
     public class AddApplicationHandler: IRequestHandler<AddApplicationCommand, JobApplicationDto>
     {
         private readonly IApplicationsRepository _applicationsRepository;
-        private readonly IStorageRepository _storageRepository;
-        private readonly ISendEmail _sendEmail;
+        private readonly IStorageService _storageRepository;
+        private readonly ISendEmailService _sendEmail;
 
         public AddApplicationHandler(
             IApplicationsRepository applicationsRepository,
-            IStorageRepository storageRepository,
-            ISendEmail sendEmail
+            IStorageService storageRepository,
+            ISendEmailService sendEmail
         )
         {
             _applicationsRepository = applicationsRepository;

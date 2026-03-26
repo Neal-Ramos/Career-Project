@@ -12,10 +12,11 @@ namespace Domain.Entities
         public string Roles {set; get;} = JsonSerializer.Serialize("[]");
         public string? FileRequirements {set; get;}
         public DateTime DateCreated {set; get;} = DateTime.UtcNow;
-        public string? CreatedBy {get; set;}
         public string? EditedBy {get; set;}
 
         //
+        public Guid CreatorId {get; set;}
+        public AdminAccounts CreatedBy {get; set;} = null!;
         public ICollection<JobApplications>? JobApplications {get; set;}
     }
 }

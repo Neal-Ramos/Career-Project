@@ -19,7 +19,8 @@ namespace Infrastructure.Persistence.configurations
                 .ValueGeneratedOnAdd();
 
             builder.Property(a => a.ApplicationId)
-                .HasDefaultValueSql("NEWID()");
+                .HasDefaultValueSql("NEWID()")
+                .IsRequired();
 
             builder.Property(a => a.FirstName)
                 .IsRequired()

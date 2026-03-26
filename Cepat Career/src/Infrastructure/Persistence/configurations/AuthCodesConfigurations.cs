@@ -36,7 +36,7 @@ namespace Infrastructure.Persistence.configurations
                 .IsRequired();
 
             builder.Property(a => a.DateUsed)
-                .IsRequired();
+                .HasDefaultValue(false);
 
             builder.Property(a => a.IsUsed)
                 .IsRequired();

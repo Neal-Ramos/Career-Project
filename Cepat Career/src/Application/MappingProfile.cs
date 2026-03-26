@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.commons.DTOs;
 using AutoMapper;
 
 namespace Application
@@ -10,7 +11,7 @@ namespace Application
     {
         public MappingProfile()
         {
-            
+            CreateMap<AdminAccountsDto, LoginDto>();
         }
     }
 }

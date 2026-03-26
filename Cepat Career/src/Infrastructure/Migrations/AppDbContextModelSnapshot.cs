@@ -198,10 +198,8 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<Guid>("CreatorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -236,6 +234,8 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreatorId");
+
                     b.HasIndex("JobId")
                         .IsUnique();
 
@@ -266,9 +266,23 @@ namespace Infrastructure.Migrations
                     b.Navigation("Job");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Jobs", b =>
+                {
+                    b.HasOne("Domain.Entities.AdminAccounts", "CreatedBy")
+                        .WithMany("CreatedJobs")
+                        .HasForeignKey("CreatorId")
+                        .HasPrincipalKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
             modelBuilder.Entity("Domain.Entities.AdminAccounts", b =>
                 {
                     b.Navigation("AuthCodes");
+
+                    b.Navigation("CreatedJobs");
                 });
 
             modelBuilder.Entity("Domain.Entities.Jobs", b =>
