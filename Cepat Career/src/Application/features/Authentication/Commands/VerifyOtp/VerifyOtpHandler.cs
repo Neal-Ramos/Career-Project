@@ -13,14 +13,14 @@ namespace Application.features.Authentication.Commands.VerifyOtp
     public class VerifyOtpHandler: IRequestHandler<VerifyOtpCommand, VerifyOtpDto>
     {
         private readonly IAuthCodeRepository _authCode;
-        private readonly IHashingService _hashingService;
+        private readonly ITokenService _tokenService;
         public VerifyOtpHandler(
             IAuthCodeRepository authCodeRepository,
-            IHashingService hashingService
+            ITokenService tokenService
         )
         {
             _authCode = authCodeRepository;
-            _hashingService = hashingService;
+            _tokenService = tokenService;
         }
 
         public async Task<VerifyOtpDto> Handle(
@@ -28,14 +28,21 @@ namespace Application.features.Authentication.Commands.VerifyOtp
             CancellationToken cancellationToken
         )
         {
-            var getCode = await _authCode.GetCodeByCodeAndEmail(
-                Email: req.Email,
-                Code: req.Code
-            )?? throw new InvalidCodeExeption();
+            // var getCode = await _authCode.GetCodeByCodeAndEmail(
+            //     Email: req.Email,
+            //     Code: req.Code
+            // )?? throw new InvalidCodeExeption();
 
-            
+            var token = _tokenService.GenerateJwtToken(
+                AdminId: Guid.NewGuid(),
+                Email: "nealramos72@gmail.com",
+                Role: "Admin"
+            );
 
-            return new VerifyOtpDto{};
+            return new VerifyOtpDto
+            {
+                Token = token
+            };
         }
     }
 }

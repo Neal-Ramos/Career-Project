@@ -200,10 +200,6 @@
               "target": "Package",
               "version": "[1.28.0, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -247,10 +243,6 @@
             "Resend": {
               "target": "Package",
               "version": "[0.2.2, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[7.0.3, )"
             }
           },
           "imports": [

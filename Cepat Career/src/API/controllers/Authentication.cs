@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.common.Responses;
 using Application.features.Authentication.Commands.Login;
+using Application.features.Authentication.Commands.VerifyOtp;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,27 @@ namespace API.controllers
                 UserName = req.UserName,
                 Password = req.Password
             };
+            var result = await _mediator.Send(query);
+
+            return Ok(new APIResponse<object>
+            {
+                Message = "Success",
+                Status = 200,
+                Data = result
+            });
+        }
+
+        [HttpPost("VerifyOtp")]
+        public async Task<IActionResult> VerifyOtp(
+            [FromBody] VerifyOtpCommand req
+        )
+        {
+            var query = new VerifyOtpCommand
+            {
+                Code = req.Code,
+                Email = req.Email
+            };
+
             var result = await _mediator.Send(query);
 
             return Ok(new APIResponse<object>

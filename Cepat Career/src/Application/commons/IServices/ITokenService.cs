@@ -9,8 +9,7 @@ namespace Application.commons.IServices
 {
     public interface ITokenService
     {
-        string GenerateAccessToken(AdminAccountsDto adminAccounts);
+        string GenerateJwtToken(Guid AdminId, string Email, string Role);
         string GenerateRefreshToken();
-        ClaimsPrincipal? GetPrincipalFromExpiredToken(string token);
     }
 }

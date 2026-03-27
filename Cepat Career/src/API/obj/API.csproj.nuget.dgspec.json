@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\API.csproj": {}
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\APi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\API.csproj": {
+    "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\APi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\API.csproj",
-        "projectName": "API",
-        "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\APi.csproj",
+        "projectName": "APi",
+        "projectPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\APi.csproj",
         "packagesPath": "C:\\Users\\CEPAT-OJT6\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\CEPAT-OJT6\\Documents\\GitHub\\Career-Project\\Cepat Career\\src\\API\\obj\\",
         "projectStyle": "PackageReference",
@@ -50,6 +50,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "JWT": {
+              "target": "Package",
+              "version": "[8.0.*, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.*, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.24, )"
@@ -278,10 +286,6 @@
               "target": "Package",
               "version": "[1.28.0, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -325,10 +329,6 @@
             "Resend": {
               "target": "Package",
               "version": "[0.2.2, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[7.0.3, )"
             }
           },
           "imports": [
