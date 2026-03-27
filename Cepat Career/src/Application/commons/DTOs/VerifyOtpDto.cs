@@ -7,6 +7,7 @@ namespace Application.commons.DTOs
 {
     public class VerifyOtpDto
     {
-        public string Token {get; set;} = null!;
+        public string AccessToken {get; set;} = null!;
+        public string RefreshToken {get; set;} = null!;
     }
 }

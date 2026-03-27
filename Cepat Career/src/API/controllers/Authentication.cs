@@ -54,6 +54,14 @@ namespace API.controllers
 
             var result = await _mediator.Send(query);
 
+            Response.Cookies.Append("Refresh_Token", result.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,   // JS cannot read it
+                Secure   = true,   // HTTPS only
+                SameSite = SameSiteMode.Strict, // blocks CSRF
+                Expires  = DateTime.UtcNow.AddMinutes(15)
+            });
+
             return Ok(new APIResponse<object>
             {
                 Message = "Success",

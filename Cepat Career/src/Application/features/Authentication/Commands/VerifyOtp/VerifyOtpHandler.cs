@@ -13,14 +13,20 @@ namespace Application.features.Authentication.Commands.VerifyOtp
     public class VerifyOtpHandler: IRequestHandler<VerifyOtpCommand, VerifyOtpDto>
     {
         private readonly IAuthCodeRepository _authCode;
+        private readonly IRefreshTokensRepository _refreshTokensRepository;
         private readonly ITokenService _tokenService;
+        private readonly IHashingService _hashingService;
         public VerifyOtpHandler(
             IAuthCodeRepository authCodeRepository,
-            ITokenService tokenService
+            IRefreshTokensRepository refreshTokensRepository,
+            ITokenService tokenService,
+            IHashingService hashingService
         )
         {
             _authCode = authCodeRepository;
+            _refreshTokensRepository = refreshTokensRepository;
             _tokenService = tokenService;
+            _hashingService = hashingService;
         }
 
         public async Task<VerifyOtpDto> Handle(
@@ -28,20 +34,28 @@ namespace Application.features.Authentication.Commands.VerifyOtp
             CancellationToken cancellationToken
         )
         {
-            // var getCode = await _authCode.GetCodeByCodeAndEmail(
-            //     Email: req.Email,
-            //     Code: req.Code
-            // )?? throw new InvalidCodeExeption();
+            var getCode = await _authCode.GetCodeByCodeAndEmail(
+                Email: req.Email,
+                Code: req.Code
+            )?? throw new InvalidCodeExeption();
 
-            var token = _tokenService.GenerateJwtToken(
+            var AccessToken = _tokenService.GenerateJwtToken(
                 AdminId: Guid.NewGuid(),
                 Email: "nealramos72@gmail.com",
                 Role: "Admin"
             );
+            var RefreshToken = _tokenService.GenerateRefreshToken();
+
+            await _refreshTokensRepository.CreateRefreshToken(
+                HashedToken: await _hashingService.HashString(RefreshToken),
+                ExpiryDate: DateTime.UtcNow.AddDays(1),
+                DateCreated: DateTime.UtcNow
+            );
 
             return new VerifyOtpDto
             {
-                Token = token
+                AccessToken = AccessToken,
+                RefreshToken = RefreshToken
             };
         }
     }
