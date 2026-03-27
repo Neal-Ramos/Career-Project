@@ -37,6 +37,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("AllowReactApp");
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

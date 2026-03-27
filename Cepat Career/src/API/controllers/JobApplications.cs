@@ -4,6 +4,7 @@ using Application.features.JobApplications.DTOs;
 using Application.features.JobApplications.Queries.GetApplications;
 using Azure;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.controllers
@@ -63,6 +64,7 @@ namespace API.controllers
         }
 
         [HttpGet("GetApplications")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetApplications(
             [FromQuery] string? FilterEmail,
             [FromQuery] string? FilterJob,
