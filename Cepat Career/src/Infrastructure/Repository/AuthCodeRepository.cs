@@ -6,6 +6,7 @@ using Application.commons.DTOs;
 using Application.commons.IRepository;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
 {
@@ -44,6 +45,22 @@ namespace Infrastructure.Repository
                 IsUsed = newCode.IsUsed,
                 OwnerId = newCode.OwnerId,
             };
+        }
+        public async Task<AuthCodeDto?> GetCodeByCodeAndEmail(
+            string Code,
+            string Email
+        )
+        {
+            return await _context.AuthCodes.Select(a => new AuthCodeDto
+            {
+                AuthCodeId = a.AuthCodeId,
+                Code = a.Code,
+                DateCreated = a.DateCreated,
+                DateExpiry = a.DateExpiry,
+                DateUsed = a.DateUsed,
+                IsUsed = a.IsUsed,
+                OwnerId = a.OwnerId,
+            }).FirstOrDefaultAsync(a => a.Code == Code && a.Owner.Email == Email);
         }
     }
 }

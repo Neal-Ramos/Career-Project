@@ -7,9 +7,12 @@ using Infrastructure.Services.CloudinaryServices;
 using Infrastructure.Services.CodeGenerator;
 using Infrastructure.Services.HashingService;
 using Infrastructure.Services.ResendServices;
+using Infrastructure.Services.TokenServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Resend;
 
 namespace Infrastructure
@@ -64,6 +67,9 @@ namespace Infrastructure
                 options.ApiToken = configuration["Resend:ApiKey"]!;
             });
             services.AddScoped<ISendEmailService, ResendRepository>();
+
+            //Register Jwt
+            services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
             return services;
         }

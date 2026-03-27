@@ -14,5 +14,9 @@ namespace Application.commons.IRepository
             DateTime DateExpiry,
             Guid OwnerId
         );
+        Task<AuthCodeDto?> GetCodeByCodeAndEmail(
+            string Code,
+            string Email
+        );
     }
 }
